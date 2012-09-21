@@ -1,4 +1,4 @@
 require "zircon/version"
 
-module Zircon
+class Zircon
 end
