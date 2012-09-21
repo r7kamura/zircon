@@ -4,9 +4,9 @@ require File.expand_path('../lib/zircon/version', __FILE__)
 Gem::Specification.new do |gem|
   gem.authors       = ["Ryo NAKAMURA"]
   gem.email         = ["r7kamura@gmail.com"]
-  gem.description   = %q{TODO: Write a gem description}
-  gem.summary       = %q{TODO: Write a gem summary}
-  gem.homepage      = ""
+  gem.description   = "Zircon is a mineral belonging to the group of nesosilicates."
+  gem.summary       = "IRC client library written in Pure Ruby"
+  gem.homepage      = "https://github.com/r7kamura/zircon"
 
   gem.files         = `git ls-files`.split($\)
   gem.executables   = gem.files.grep(%r{^bin/}).map{ |f| File.basename(f) }
