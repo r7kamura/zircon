@@ -1,29 +1,27 @@
 # Zircon
-
-TODO: Write a gem description
+IRC client library written in Pure Ruby.
 
 ## Installation
 
-Add this line to your application's Gemfile:
+```
+$ gem install zircon
+```
 
-    gem 'zircon'
+## Example
 
-And then execute:
+```ruby
+require "zircon"
 
-    $ bundle
+client = Zircon.new(
+  :server   => "chat.freenode.net",
+  :port     => "6667",
+  :channel  => "#chatroid",
+  :username => "zircon"
+)
 
-Or install it yourself as:
+client.on_privmsg do |message|
+  client.privmsg "#chatroid", ":zircon!"
+end
 
-    $ gem install zircon
-
-## Usage
-
-TODO: Write usage instructions here
-
-## Contributing
-
-1. Fork it
-2. Create your feature branch (`git checkout -b my-new-feature`)
-3. Commit your changes (`git commit -am 'Added some feature'`)
-4. Push to the branch (`git push origin my-new-feature`)
-5. Create new Pull Request
+client.run!
+```
