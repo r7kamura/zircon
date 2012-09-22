@@ -2,10 +2,10 @@ require "zircon/message/patterns"
 
 class Zircon
   class Message
-    attr_reader :prefix, :command
+    attr_reader :prefix, :command, :text
 
     def initialize(text)
-      if match = PATTERNS::MESSAGE_PATTERN.match(text)
+      if match = Patterns::MESSAGE_PATTERN.match(text)
         @text    = text
         @prefix  = match[1]
         @command = match[2]
