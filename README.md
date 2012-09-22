@@ -13,7 +13,7 @@ $ gem install zircon
 require "zircon"
 
 client = Zircon.new(
-  :server   => "chat.freenode.net",
+  :server   => "example.com",
   :port     => "6667",
   :channel  => "#chatroid",
   :username => "zircon"
