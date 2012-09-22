@@ -89,9 +89,13 @@ class Zircon
     join @channel if @channel
   end
 
+  # Start blocking-loop.
+  # Call trigger_message and trigger_xxx on a message received.
+  # (xxx is determined by the command type of the message)
   def wait_message
     loop do
       message = Message.new(gets)
+      trigger_message(message)
       send("trigger_#{message.type}", message)
     end
   end
