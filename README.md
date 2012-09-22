@@ -23,5 +23,10 @@ client.on_privmsg do |message|
   client.privmsg "#chatroid", ":zircon!"
 end
 
+client.on_message do |message|
+  puts "*** `on_message` responds with all received message ***"
+  p message
+end
+
 client.run!
 ```
