@@ -11,7 +11,7 @@ class Zircon
         @command = match[2]
         @rest    = match[3..-1]
       else
-        raise ArgumentError.new("Invalid message")
+        raise ArgumentError.new("Invalid message: #{text}")
       end
     end
 
