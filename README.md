@@ -25,7 +25,10 @@ end
 
 client.on_message do |message|
   puts "*** `on_message` responds with all received message ***"
-  p message
+  puts message.from
+  puts message.to
+  puts message.type
+  puts message.body
 end
 
 client.run!
