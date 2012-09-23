@@ -2,7 +2,7 @@ require "zircon/message/patterns"
 
 class Zircon
   class Message
-    attr_reader :prefix, :command, :text
+    attr_reader :prefix, :command, :raw
 
     def initialize(text)
       if match = Patterns::MESSAGE_PATTERN.match(text)
@@ -19,10 +19,18 @@ class Zircon
       @type ||= @command.to_s.downcase
     end
 
-    def name
-      @name ||= begin
+    def from
+      @from ||= begin
         @prefix && @prefix.split("!").first
       end
+    end
+
+    def to
+      params[0]
+    end
+
+    def body
+      params[1]
     end
 
     def params
