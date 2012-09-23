@@ -66,7 +66,7 @@ class Zircon
     @username     = args[:username]
     @nickname     = args[:nickname] || @username
     @realname     = args[:realname] || @username
-    on_ping { |message| pong(message.text) }
+    on_ping { |message| pong(message.raw) }
   end
 
   def run!
