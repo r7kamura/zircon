@@ -33,3 +33,28 @@ end
 
 client.run!
 ```
+
+## Features
+IRC has following commands.
+
+```
+ADMIN   KICK    MOTD     QUIT     VERSION
+AWAY    KNOCK   NAMES    RULES    VHOST
+CREDITS LICENSE NICK     SETNAME  WATCH
+CYCLE   LINKS   NOTICE   SILENCE  WHO
+DALINFO LIST    PART     STATS    WHOIS
+INVITE  LUSERS  PING     TIME     WHOWAS
+ISON    MAP     PONG     TOPIC    USER
+JOIN    MODE    PASS     USERHOST PRIVMSG
+```
+
+You can use sender and receiver methods for each commands.
+
+```
+# For example about PRIVMSG
+# [sender - privmsg]
+privmsg("#channel", ":Hello")
+
+# [receiver - on_privmsg]
+on_privmsg {|message| puts message.body }
+```
