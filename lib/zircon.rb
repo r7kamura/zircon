@@ -80,8 +80,6 @@ class Zircon
     end
   end
 
-  private
-
   def login
     pass @password if @password
     nick @nickname
@@ -99,6 +97,8 @@ class Zircon
       send("trigger_#{message.type}", message)
     end
   end
+
+  private
 
   def command(*args)
     write(args * " " + "\r\n")
