@@ -40,7 +40,7 @@ class Zircon
         when !@rest[0].empty?
           middle, trailer, = *@rest
           params = middle.split(" ")
-        when !@rest[2].empty?
+        when !@rest[2].nil? && !@rest[2].empty?
           middle, trailer, = *@rest[2, 2]
           params = middle.split(" ")
         when @rest[1]
