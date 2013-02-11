@@ -56,6 +56,7 @@ class Zircon
     WHO
     WHOIS
     WHOWAS
+    NUMERICREPLY
   ].freeze
 
   def initialize(args = {})
