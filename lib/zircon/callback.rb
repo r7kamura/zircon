@@ -7,9 +7,10 @@ class Zircon
     private
 
     def method_missing(method_name, *args, &block)
-      if method_name =~ /(list|on|trigger)_([0-9]+)/
+      case method_name
+      when /(list|on|trigger)_([0-9]+)/
         send($1, 'numericreply', *args, &block)
-      elsif method_name =~ /(list|on|trigger)_([a-z0-9]+)/
+      when /(list|on|trigger)_([a-z0-9]+)/
         send($1, $2, *args, &block)
       else
         super
