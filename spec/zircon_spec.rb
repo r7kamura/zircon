@@ -28,4 +28,29 @@ describe Zircon do
       Zircon.new.privmsg("channel", ":message")
     end
   end
+
+  describe "Callback for numeric reply" do
+    let(:callback) do
+      proc {|msg|}
+    end
+
+    let(:zircon) do
+      Zircon.new
+    end
+
+    before do
+      zircon.on_numericreply(&callback)
+    end
+
+    context "when triggered event name is number" do
+      let(:event) do
+        345
+      end
+
+      it "should be called" do
+        callback.should_receive(:call).with('message')
+        zircon.send("trigger_#{event}", 'message')
+      end
+    end
+  end
 end
