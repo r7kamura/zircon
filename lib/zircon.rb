@@ -2,6 +2,7 @@ require "zircon/version"
 require "zircon/callback"
 require "zircon/message"
 require "socket"
+require "openssl"
 
 class Zircon
   include Callback
@@ -12,7 +13,8 @@ class Zircon
     :channel,
     :username,
     :nickname,
-    :realname
+    :realname,
+    :use_ssl
   )
 
   COMMAND_NAMES = %w[
@@ -67,6 +69,7 @@ class Zircon
     @username     = args[:username]
     @nickname     = args[:nickname] || @username
     @realname     = args[:realname] || @username
+    @use_ssl      = args[:use_ssl]  || false
     on_ping { |message| pong(message.raw) }
   end
 
@@ -114,6 +117,16 @@ class Zircon
   end
 
   def socket
-    @socket ||= TCPSocket.new(@server, @port)
+    @socket ||= @use_ssl ? ssl_socket : tcp_socket
+  end
+
+  def tcp_socket
+    TCPSocket.new(@server, @port)
+  end
+
+  def ssl_socket
+    socket = OpenSSL::SSL::SSLSocket.new(tcp_socket)
+    socket.sync_close = true
+    socket.connect
   end
 end
