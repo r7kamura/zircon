@@ -15,6 +15,15 @@ class Zircon
       end
     end
 
+    def to_hash
+      {
+        body: body,
+        from: from,
+        to: to,
+        type: type,
+      }
+    end
+
     def type
       @type ||= @command.to_s.downcase
     end
