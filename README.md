@@ -16,7 +16,8 @@ client = Zircon.new(
   :server   => "example.com",
   :port     => "6667",
   :channel  => "#chatroid",
-  :username => "zircon"
+  :username => "zircon",
+  :password => "optional password",
 )
 
 client.on_privmsg do |message|
