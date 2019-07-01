@@ -10,9 +10,24 @@ class Zircon
         @prefix  = match[1]
         @command = match[2]
         @rest    = match[3..-1]
+
+        puts @command.inspect
+        case @command
+        when /\A\Z/
+          return invalid_message(text)
+        when nil
+          return invalid_message(text)
+        when "ERROR"
+          return invalid_message(text)
+        end
       else
-        raise ArgumentError.new("Invalid message: #{text}")
+        return invalid_message(text)
       end
+    end
+
+    def invalid_message(text)
+      warn "Invalid message: #{text}, skipping."
+      :invalid_message
     end
 
     def to_hash
@@ -46,6 +61,8 @@ class Zircon
       @params ||= begin
         params = []
         case
+        when @rest.nil?
+          warn "No params"
         when !@rest[0].empty?
           middle, trailer, = *@rest
           params = middle.split(" ")

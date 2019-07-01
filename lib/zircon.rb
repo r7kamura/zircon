@@ -97,6 +97,7 @@ class Zircon
   def wait_message
     loop do
       message = Message.new(gets)
+      next if message == :invalid_message
       trigger_message(message)
       send("trigger_#{message.type}", message)
     end
