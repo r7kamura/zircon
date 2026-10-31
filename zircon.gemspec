@@ -15,6 +15,8 @@ Gem::Specification.new do |gem|
   gem.require_paths = ["lib"]
   gem.version       = Zircon::VERSION
 
+  gem.required_ruby_version = ">= 3.3"
+
   gem.add_development_dependency "rspec"
   gem.add_development_dependency "rspec-its"
 end
