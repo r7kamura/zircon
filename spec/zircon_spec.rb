@@ -11,7 +11,7 @@ describe Zircon do
 
   describe "#wait_message" do
     it "should trigger callback related to message type" do
-      message = mock
+      message = double
       message.stub(:type).and_return("xxx")
       Zircon::Message.stub(:new).and_return(message)
       Zircon.any_instance.stub(:loop) { |&block| block.call }
