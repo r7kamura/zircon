@@ -8,6 +8,11 @@ Gem::Specification.new do |gem|
   gem.summary       = "IRC client library written in Pure Ruby"
   gem.homepage      = "https://github.com/r7kamura/zircon"
 
+  gem.metadata["homepage_uri"] = gem.homepage
+  gem.metadata["source_code_uri"] = gem.homepage
+  gem.metadata["changelog_uri"] = "#{gem.homepage}/releases"
+  gem.metadata["rubygems_mfa_required"] = "true"
+
   gem.files         = `git ls-files`.split($\)
   gem.executables   = gem.files.grep(%r{^bin/}).map{ |f| File.basename(f) }
   gem.test_files    = gem.files.grep(%r{^(test|spec|features)/})
